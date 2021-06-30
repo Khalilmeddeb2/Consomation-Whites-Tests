@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Exam</title>
+<style type="text/css">
+	span {
+        display: inline-block;
+        width: 280px;
+        text-align: left;
+    }
+</style>
+</head>
+<body>
+<div align="center">
+    <div th:if="${ #lists.isEmpty(whiteTestResponse.BadRequest)}">
+	<h2> ----- WhiteTest -----</h2><br><br><br>
+	<span style="color:blue;"><b>Student :</b></span><br><br>
+	
+	<span style="color:red;"><i>Id :</i></span><span th:text="${whiteTestResponse.student.id}"></span><br><br>
+	<span style="color:red;"><i>Name:</i></span><span th:text="${whiteTestResponse.student.name}"></span><br><br>
+	<span style="color:blue;"><b>Address :</b></span><br><br>
+	<span style="color:red;"><i>Street:</i></span><span th:text="${whiteTestResponse.student.address.street}"></span><br><br>
+	<span style="color:red;"><i>City:</i></span><span th:text="${whiteTestResponse.student.address.city}"></span><br><br>
+	<!--  <span>StudentAdressCodePostal:</span><span th:text="${whiteTestResponse.student.address.code-poste}"></span><br/>-->
+	<span style="color:blue;"><b>Exam :</b></span><br>
+	<br>
+	<span style="color:red;"><i>Code:</i></span><span th:text="${whiteTestResponse.exam.code}"></span><br><br>
+	<span style="color:red;"><i>Name:</i></span><span th:text="${whiteTestResponse.exam.name}"></span><br><br>
+	<span style="color:red;"><i>Disponibilty:</i></span><span th:text="${whiteTestResponse.exam.disponibility}"></span><br><br>
+	<span style="color:red;"><i>Date:</i></span><span th:text="${whiteTestResponse.date}"></span><br><br>
+	</div>
+	<div th:if="${not #lists.isEmpty(whiteTestResponse.BadRequest)}">
+		<h4> Reasons why is not accepted</h4><br><br><br>
+		<div th:each="reason, state : ${whiteTestResponse.BadRequest}">
+		<span style="color:red;" th:text="'Reason '+${state.index+1}+' :'"></span><span th:text="${reason}"></span><br><br>
+		</div>
+	</div>
+</div>
+</body>
+</html>

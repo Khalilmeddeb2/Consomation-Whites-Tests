@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>check whiteTest Form</title>
+<style type="text/css" >
+	label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left;
+    }
+    input[type=text], input[type=password], input[type=number], input[type=range], select {
+        display: inline-block;
+        width: 200px;
+    }
+    input[type=radio] {
+        margin-left: 45px;
+    }
+    input[type=checkbox] {
+        margin-right: 190px;
+    }  
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+</style>
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+<div style="border: 3px blue inset;" align="center">
+	<h2>Check student Form</h2>
+	<form  action="#" th:action="@{/check/student}" method="post" th:object="${studentRequest}">
+		<label> student Id :</label>
+		<input type="number"  min=1 th:field="*{studentId}" /> <br/>
+		
+		<label> code Exam :</label>
+		<input type="text" required
+        th:field="*{examCode}" /> <br/>
+		
+		<br/>
+		<br>
+		<button  style="float: right; background-color:blue"type="submit"> Check </button>
+	</form>
+</div>
+
+</body>
+</html>
